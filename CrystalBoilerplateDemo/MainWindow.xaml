@@ -3,10 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:my="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer"
         xmlns:local="clr-namespace:CrystalBoilerplateDemo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="475" Width="900">
     <Grid>
-        
+        <my:CrystalReportsViewer  HorizontalAlignment="Left" Name="crystalReportsViewer1"
+                                 VerticalAlignment="Top" Height="400" Width="900" />
+        <Button x:Name="button" Content="View Batch table" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Margin="10,0,0,10" Click="button_Click"/>
+
     </Grid>
 </Window>

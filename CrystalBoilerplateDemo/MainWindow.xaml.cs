@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,26 @@ namespace CrystalBoilerplateDemo
         public MainWindow()
         {
             InitializeComponent();
+        }
+        SampleDataSet ds = new SampleDataSet();
+        
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            ReportDocument report = new ReportDocument();
+            report.Load("..\\..\\SampleCrystalReport.rpt");
+            using (SampleModel db = new SampleModel())
+            {
+                
+                SampleDataSet dataset = new SampleDataSet();
+                System.Data.DataSet dsCopy = dataset.Copy();
+                
+                SampleDataSetTableAdapters.batchTableAdapter adapter = new SampleDataSetTableAdapters.batchTableAdapter();
+                adapter.Fill(dataset.batch);
+                report.SetDataSource(dataset);
+                
+              
+            }
+            crystalReportsViewer1.ViewerCore.ReportSource = report;
         }
     }
 }
